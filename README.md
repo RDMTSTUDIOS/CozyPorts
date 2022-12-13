@@ -33,13 +33,15 @@ Remember about entities that contained in a pipeline? [Pipeline concept](https:/
 .connectToPort(port: number, entity: any)
 ```
 Let's create an entity and place it to specific pipeline.
-
+> Note: entities can only not be a html elements, we will see it a bit later.
 ```ts
 const Button1: HTMLElement = document.createElement('button');
 Button1.textContent = 'Button1';
-Button1.addEventListener('your_event', (): void => console.log('Event dispatched to Button1'));
+Button1.addEventListener('your_event', (): void =>
+{
+  console.log('Event dispatched to Button1'))
+};
 ```
-> Note: entities can only not be a html elements, we will see it a bit later.
 
 
 
