@@ -287,7 +287,7 @@ So again, we expect to see only one console log:
 
 ![single-calls_2](https://user-images.githubusercontent.com/118057254/207463397-3cdff309-c883-4c67-b7ec-2e44dc00b5f5.png)
 
-### First " shout "
+### Last " shout "
 
 The last " shout " is a dispatch to all method.
 
