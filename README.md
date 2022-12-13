@@ -14,6 +14,11 @@ import CozyPorts from './CozyPorts'
 ```
 # How it works in practice
 
-Firstly we need an 'pipeline' entity - instance of `CozyPorts`.
+Firstly we need an pipeline. Where we can put our entities.
+`CozyPorts` is used not to return a single pipeline, but a pipelines network - an instance of `CozyPorst`, which takes as a parameter an integer - a number of pipelines, that exist in this network.
+
+```ts
+const pipeline = new CozyPorts(10);
+```ts
 
 An identifier of that pipeline is a integer number, in `CozyPorts` it's called `port`.
