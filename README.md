@@ -63,9 +63,9 @@ Basically, `Button_1` shouts: 'your_event' in the pipeline with id: 1, so every 
 
 Now create another entity - Button2:
 ```ts
-const Button2 = document.createElement('button');
+const Button2: HTMLElement = document.createElement('button');
 Button2.textContent = 'Button2';
-Button2.addEventListener('your_event', ()=> console.log('Event dispatched to Button2'));
+Button2.addEventListener('your_event', (): void => console.log('Event dispatched to Button2'));
 
 const Button2_connection = pipelines_network.connectToPort(1, Button2);
 ```
