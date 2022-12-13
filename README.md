@@ -32,7 +32,7 @@ Remember about entities that contained in a pipeline? [Pipeline concept](https:/
 ```ts
 .connectToPort(port: number, entity: any)
 ```
-Let's create an entity and place it to specific pipeline.
+Let's create an entity and place it to a specific pipeline.
 > Note: entities can only not be a html elements, we will see it a bit later.
 ```ts
 const Button1: HTMLElement = document.createElement('button');
@@ -60,6 +60,30 @@ Button1_connection('your_event')
 ```
 
 Basically, `Button_1` shouts: 'your_event' in the pipeline with id: 1, so every entity in it can hear it. Important, that entity, that " shouts " also receives this message.
+
+Now create another entity - Button2:
+```ts
+const Button2 = document.createElement('button');
+Button2.textContent = 'Button2';
+Button2.addEventListener('your_event', ()=> console.log('Event dispatched to Button2'));
+
+const Button2_connection = pipelines_network.connectToPort(1, Button2);
+```
+
+Button2 is now placed to pipeline with id: 1.
+
+`addEventListener('your_event', ...)` in our paradigm of CozyPorts means, that Button2 will now respond, if someone in pipeline (port) width id: 1, it will do something.
+
+And now, we can test, how it's all works.
+
+```ts
+Button1_connection('your_event')
+```
+
+
+
+
+
 
 
 
