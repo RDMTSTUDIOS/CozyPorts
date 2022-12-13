@@ -28,7 +28,7 @@ Now our `pipelines_network` is an API to interract with it - object that has two
 
 ### Connect to port
 
-Remember about tha
+Remember about entities that contained in a pipeline? [Pipeline concept](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#pipeline-concept). So `connectToPort()` method places to a specified pipeline (port: integer) a specified entity (entity: any).
 
 ```ts
 .connectToPort(port: number, entity: any)
