@@ -160,7 +160,8 @@ class Logger
 };
 
 // If this entity won't send messages anyway or there is just no need in it,
-// you can just connect it, it don't save API to send messages.
+// you can just connect it and don't save API to send messages.
+// placed to pipeline 1
 pipelines_network.connectToPort(1, Logger);
 // <---
 
@@ -173,7 +174,8 @@ class DummyObjectsGenerator
         console.log('Fetching Pentagon and Zone-51 most secret server . . .');
     };
 };
-// object, that won't respond to message 'your_event';
+
+// object, that won't respond to message 'your_event'. because we don't specified it's behavior to message 'your_event';
 const RandomName55 = new DummyObjectsGenerator();
 // placed to pipeline 1
 const DummyObjectsGenerator_connection = pipelines_network.connectToPort(1, RandomName55);
