@@ -203,7 +203,7 @@ Button1_connection('your_event', 'some_random_data')
 // The thing is you can use imperative approach.
 // To send message - just call a function, named as you want.
 // Basically, you can setup a complex bigger pipelines network,
-and, to start something some process, you just call it through interface,
+// and, to start something some process, you just call it through interface,
 
 // through one entry point,
 // through one entity,
@@ -226,6 +226,92 @@ console.log(`\n\n`) // ! just for better console readability !
 The result is:
 
 ![good-example_final-result](https://user-images.githubusercontent.com/118057254/207460862-b7e700e4-9e8d-4379-9fe8-0f428518dcc9.png)
+
+Let's see what happend.
+
+### First " shout "
+
+Button1 message:
+```ts
+Button1_connection('your_event', 'some_random_data')
+```
+Everyone in pipeline 1 heared 'your_event', with thew data: string, attached to it.
+
+```ts
+const Button1_connection = pipelines_network.connectToPort(1, Button1);
+pipelines_network.connectToPort(1, Logger);
+const DummyObjectsGenerator_connection = pipelines_network.connectToPort(1, RandomName55);
+```
+This entities are in the pipeline, but only two of them 'want' to react, respond to 'your_event':
+
+```ts
+Button1.addEventListener('your_event', (): void => console.log('Event dispatched to Button1'));
+
+// in class Logger --->
+public static your_event(data: any)
+    {
+        this.WriteLog(data)
+    };
+// <---
+```
+So we see, what we expect:
+![single-calls_1](https://user-images.githubusercontent.com/118057254/207462504-ee280ffc-f89c-4154-92ed-a7e0c1638f43.png)
+
+
+### Second " shout "
+
+Entity Button2 message to pipeline 2
+
+```ts
+PlaySound('your_event');
+```
+But the only entity in this pipeline is Button2, and it's have reaction to 'your_event'.
+
+```ts
+Button2.addEventListener('your_event', (): void => console.log('Event dispatched to Button2'));
+// placed to pipeline 2
+const PlaySound = pipelines_network.connectToPort(2, Button2);
+```
+REMEMBER! That Button1 and Loger are also will respond to 'your_event', BUT, they are in other pipeline, number 1, so they don't even hear this message, and woun't responce.
+
+So again, we expect to see only one console log:
+
+![single-calls_2](https://user-images.githubusercontent.com/118057254/207463397-3cdff309-c883-4c67-b7ec-2e44dc00b5f5.png)
+
+### First " shout "
+
+The last " shout " is a dispatch to all method.
+
+```ts
+pipelines_network.dispatchToAll('your_event', 'another_random_data')
+```
+So, we expect to see responce from all entitiss, that will responce to 'your_event'.
+
+And that's what we see:
+
+![mass-dispatch](https://user-images.githubusercontent.com/118057254/207463725-466c745c-5bf1-4f22-967f-3593f47d2232.png)
+
+Every entity, that's able to responce to 'your_event' - responced.
+
+## What it all was about?
+
+In **CozyPorts Paradigm** entities are some kind of blinded, "they all are in a pipeline (you can treat pipeline as big and absolutely dark tunnel) without light", they don't know anything, where they are, how many and are there any other entities, and they don't have to do that. When any entity sends message - it's like "shouting", everyone in the pipeline will hear it, but don't see who's shouted, and manage themselves - what to do, based on what they heared. You don't need to create pipelines and connect them - just create a pipelines network, configuring only one - amount of pipelines.
+You don't have to import elements in code, they can now talk blindly. You can treat pipelines network as a `namespace`, where you can access every entity or just specific, but blindly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
