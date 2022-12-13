@@ -255,6 +255,7 @@ public static your_event(data: any)
 // <---
 ```
 So we see, what we expect:
+
 ![single-calls_1](https://user-images.githubusercontent.com/118057254/207462504-ee280ffc-f89c-4154-92ed-a7e0c1638f43.png)
 
 
@@ -295,20 +296,57 @@ Every entity, that's able to responce to 'your_event' - responced.
 
 ## What it all was about?
 
-In **CozyPorts Paradigm** entities are some kind of blinded, "they all are in a pipeline (you can treat pipeline as big and absolutely dark tunnel) without light", they don't know anything, where they are, how many and are there any other entities, and they don't have to do that. When any entity sends message - it's like "shouting", everyone in the pipeline will hear it, but don't see who's shouted, and manage themselves - what to do, based on what they heared. You don't need to create pipelines and connect them - just create a pipelines network, configuring only one - amount of pipelines.
-You don't have to import elements in code, they can now talk blindly. You can treat pipelines network as a `namespace`, where you can access every entity or just specific, but blindly
+In **CozyPorts Paradigm** entities are some kind of blinded, "they all are in a pipeline (you can treat pipeline as big and absolutely dark tunnel) without light", they don't know anything, where they are, how many and are there any other entities, and they don't have to do that.
 
+When any entity sends message - it's like "shouting", everyone in the pipeline will hear it, but don't see who's shouted, and manage themselves - what to do, based on what they heared. You don't need to create pipelines and connect them - just create a pipelines network, configuring only one - amount of pipelines.
 
+You don't have to import elements in code, they can now talk blindly. You can treat pipelines network as a `namespace`, where all your entities can talk to each other, but blindly and even share any data, attached to "message", among entities.
 
+You can create your architecture in one, where calling one function - a returned function from connecting entity to a port, will turn very comples process and make your app very imperative, practically without loss of performance.
 
+## Summing up and API
 
+#### Import
 
+```ts
+import CozyPorts from './CozyPorts'
+```
 
+#### Create a pipilines network
 
+```ts
+const pipelines_network_name = new CozyPorts(amount_of_pipelines: number-integer);
+```
 
+#### Make elements respond to messages
 
+To respong to message 'my_event_21'
+```ts
+to_DOM-elements_/_nodes_use.addEventListener('my_event', (): func:);
 
+public my_event_21(data: any)
+    {
+        this.WriteLog(data)
+    };
+```
 
+#### Connect to port and create function to send messages trough pipeline
+
+```ts
+const function_to_send_message_from_entity1: (message: string, data?: any) => void = pipelines_network.connectToPort(port: number-integer, entity: any);
+```
+
+#### Send message
+
+```ts
+function_to_send_message_from_entity1(messsage: string, data?: any)
+```
+
+#### Send message to everyone in a network
+
+```ts
+pipelines_network_name.dispatchToAll(message: string, data?: any): void
+```
 
 
 
