@@ -24,4 +24,15 @@ const pipelines_network = new CozyPorts(10);
 ```
 An identifier of specific pipeline is an integer number, in `CozyPorts` it's called `port`.
 
-Now our `pipelines_network` is an API to interract with our pipelines network and it has only two options: `.connectToPort(port: number, entity: any)` and `dispatchToAll(message: string, data?: any)`.
+Now our `pipelines_network` is an API to interract with it and it has only two options: `.connectToPort(port: number, entity: any)` and `dispatchToAll(message: string, data?: any)`.
+
+### Connect to port
+
+```ts
+.connectToPort(port: number, entity: any)
+```
+
+
+
+
+
