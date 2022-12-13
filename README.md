@@ -108,6 +108,7 @@ AND it's very easy to make them respond to `messages` - by just adding a eventLi
 
 ## "Good" example
 
+Create and prepare your entities:
 
 ```ts
 import CozyPorts from './CozyPorts'
@@ -133,7 +134,7 @@ Button2.textContent = 'Button2';
 // responce for message 'your_event'
 Button2.addEventListener('your_event', (): void => console.log('Event dispatched to Button2'));
 // placed to pipeline 2
-const Button2_connection = pipelines_network.connectToPort(2, Button2);
+const PlaySound = pipelines_network.connectToPort(2, Button2);
 // <---
 
 
@@ -143,6 +144,7 @@ class Logger
     private static _logs: string[] = [];
     private static get logs()
     {
+        console.log(this._logs);
         return this._logs;
     };
     
@@ -160,8 +162,7 @@ class Logger
 };
 
 // If this entity won't send messages anyway or there is just no need in it,
-// you can just connect it and don't save API to send messages.
-// placed to pipeline 1
+// you can just connect it, it don't save API to send messages.
 pipelines_network.connectToPort(1, Logger);
 // <---
 
@@ -174,11 +175,28 @@ class DummyObjectsGenerator
         console.log('Fetching Pentagon and Zone-51 most secret server . . .');
     };
 };
-
-// object, that won't respond to message 'your_event'. because we don't specified it's behavior to message 'your_event';
+// object, that won't respond to message 'your_event';
 const RandomName55 = new DummyObjectsGenerator();
 // placed to pipeline 1
 const DummyObjectsGenerator_connection = pipelines_network.connectToPort(1, RandomName55);
 // <---
 ```
+
+And now send messages through pipelines:
+
+```ts
+// Send message through pipeline (port) - 1
+Button1_connection('your_event', 'some_random_data')
+
+// Send message through pipeline (port) - 2
+// The thing is you can use imperative approach
+PlaySound('your_event');
+```
+
+
+
+
+
+
+
 
