@@ -12,7 +12,7 @@ So, let me explain the same in practice.
 ```ts
 import CozyPorts from './CozyPorts'
 ```
-# How it works in practice
+## How it works in practice
 
 Firstly we need an pipeline. Where we can put our entities.
 `CozyPorts` is used not to return a single pipeline, but a pipelines network - an instance of `CozyPorst`, which takes only one parameter as an integer - a number of pipelines, that will exist in a network.
@@ -106,6 +106,15 @@ Messages can be compared to echo, which spreads across the pipeline.***. "
 
 AND it's very easy to make them respond to `messages` - by just adding a eventListeners to HTMLElements and public methods to classes and objects. You can even done it dynamically in your code - remove method/eventListener - entity won't respond, add method/eventListener - it will. You don't need co configure the pipeline or a network later in code. You are not controlling the structure of a network - you control entitys behavior or they are control themselves dynamically listen for event or not or changing it's behavior for various messages - messages also can be passed with `data: any`.
 
+### Dispatch to all
+
+Create pipelines networks also provided you a second method `.dispatchToAll()`:
+
+```ts
+.dispatchToAll(message: string, data?: any): void
+```
+It " shouts " to all entities, connected to any port in that network. Entities, connected to ports, for example, 2 and 7 will receive this message.
+
 ## "Good" example
 
 Create and prepare your entities:
@@ -142,9 +151,9 @@ const PlaySound = pipelines_network.connectToPort(2, Button2);
 class Logger
 {
     private static _logs: string[] = [];
-    private static get logs()
+    private static get logs(): string[]
     {
-        console.log(this._logs);
+        this._logs.forEach((value, index): void => console.log(`%c${index} - ${value}`, 'background: #222; color: #bada55'))
         return this._logs;
     };
     
@@ -170,7 +179,7 @@ pipelines_network.connectToPort(1, Logger);
 // Entity 4: --->
 class DummyObjectsGenerator
 {
-    private veryUsefulMethod()
+    private veryUsefulMethod(): void
     {
         console.log('Fetching Pentagon and Zone-51 most secret server . . .');
     };
@@ -185,16 +194,27 @@ const DummyObjectsGenerator_connection = pipelines_network.connectToPort(1, Rand
 And now send messages through pipelines:
 
 ```ts
+console.log(`\n\nSingle calls:\n\n`) // ! just for better console readability !
+
 // Send message through pipeline (port) - 1
 Button1_connection('your_event', 'some_random_data')
 
 // Send message through pipeline (port) - 2
 // The thing is you can use imperative approach
 PlaySound('your_event');
+
+console.log(`\n\nDispatch to all:\n\n`) // ! just for better console readability !
+
+pipelines_network.dispatchToAll('your_event', 'another_random_data')
+
+console.log(`\n\n`) // ! just for better console readability !
 ```
 
+The result is:
 
+```ts
 
+```
 
 
 
