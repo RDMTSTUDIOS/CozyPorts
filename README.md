@@ -100,9 +100,9 @@ For example classes, objects, `CozyPorts` even can be used to work only with the
 
 You can control, what **what entity hears** or **will it respond or not** by connecting it to a **Pipelines nerwork** specified `port`. And the feature here that entity hears everything in that pipeline, BUT, it can respond and not to respond, and it depends only on entity, so your code is still encapsulated - 
 
-" ***any other entity don't have to know anything about this entity, and even don't have to know, that it's event exists***. "
+" ***any other entity don't have to know anything about this entity, and even don't have to know, that it's even exists.
+Messages can be compared to echo, which spreads across the pipeline.***. "
 
-`Messages` can be compared to echo, which spreads across the pipeline.
 
 AND it's very easy to make them respond to `messages` - by just adding a eventListeners to HTMLElements and public methods to classes and objects. You can even done it dynamically in your code - remove method/eventListener - entity won't respond, add method/eventListener - it will. You don't need co configure the pipeline or a network later in code. You are not controlling the structure of a network - you control entitys behavior 
 
