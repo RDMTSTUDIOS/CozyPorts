@@ -82,11 +82,13 @@ Button1_connection('your_event')
 
 ![result](https://user-images.githubusercontent.com/118057254/207444662-05a6acbd-e3e4-441f-8e6c-7885967a28c7.png)
 
-Let's change pipeline (port) to, where we placing our `Button2`.
+Let's change pipeline (port) to, where we placing our Button2.
 
 ```ts
 const Button2_connection = pipelines_network.connectToPort(2, Button2);
 ```
+
+And now, if Button1 will " shout 'your_event' " - Button2 won't hear it. 
 
 ![result_anotherPort](https://user-images.githubusercontent.com/118057254/207444999-04569032-5196-499b-b051-d7f93e470a01.png)
 
