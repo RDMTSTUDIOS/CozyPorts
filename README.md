@@ -37,11 +37,39 @@ Let's create an entity and place it to specific pipeline.
 ```ts
 const Button1: HTMLElement = document.createElement('button');
 Button1.textContent = 'Button1';
-Button1.addEventListener('your_event', (): void =>
-{
-  console.log('Event dispatched to Button1'))
-};
+Button1.addEventListener('your_event', (): void => console.log('Event dispatched to Button1'));
 ```
+Our first entity called 'Button1' will now respond, if someone will " shout 'your_event' ".
+
+Now let's place it to pipeline:
+
+```ts
+const Button1_connection = pipelines_network.connectToPort(1, Button1);
+```
+`1` - port, identifier of that pipeline, `Button1` - entity to place in it. This method returns an function - a method to " shout " something to the pipeline.
+
+```ts
+Button1_connection: (message: string, data?: any) => void
+```
+`message` - is like, the words that entity with shout in this pipeline, and `data` - any other stuff you can pass with this message.
+
+To " shout ", we can just call it:
+
+```ts
+Button1_connection('your_event')
+```
+
+Basically, `Button_1` shouts: 'your_event' in the pipeline with id: 1, so every entity in it can hear it. Important, that entity, that " shouts " also receives this message.
+
+
+
+
+
+
+
+
+
+
 
 
 
