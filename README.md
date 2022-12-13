@@ -200,7 +200,20 @@ console.log(`\n\nSingle calls:\n\n`) // ! just for better console readability !
 Button1_connection('your_event', 'some_random_data')
 
 // Send message through pipeline (port) - 2
-// The thing is you can use imperative approach
+// The thing is you can use imperative approach.
+// To send message - just call a function, named as you want.
+// Basically, you can setup a complex bigger pipelines network,
+and, to start something some process, you just call it through interface,
+
+// through one entry point,
+// through one entity,
+// with a signle function call,
+// with a single line of code,
+// where each part is encapsulated and flexible,
+// and you don't have to setup imports.
+
+// Isn't that good?
+
 PlaySound('your_event');
 
 console.log(`\n\nDispatch to all:\n\n`) // ! just for better console readability !
@@ -212,9 +225,7 @@ console.log(`\n\n`) // ! just for better console readability !
 
 The result is:
 
-```ts
-
-```
+![good-example_final-result](https://user-images.githubusercontent.com/118057254/207460862-b7e700e4-9e8d-4379-9fe8-0f428518dcc9.png)
 
 
 
