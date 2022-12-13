@@ -104,10 +104,79 @@ You can control, what **what entity hears** or **will it respond or not** by con
 Messages can be compared to echo, which spreads across the pipeline.***. "
 
 
-AND it's very easy to make them respond to `messages` - by just adding a eventListeners to HTMLElements and public methods to classes and objects. You can even done it dynamically in your code - remove method/eventListener - entity won't respond, add method/eventListener - it will. You don't need co configure the pipeline or a network later in code. You are not controlling the structure of a network - you control entitys behavior 
+AND it's very easy to make them respond to `messages` - by just adding a eventListeners to HTMLElements and public methods to classes and objects. You can even done it dynamically in your code - remove method/eventListener - entity won't respond, add method/eventListener - it will. You don't need co configure the pipeline or a network later in code. You are not controlling the structure of a network - you control entitys behavior or they are control themselves dynamically listen for event or not or changing it's behavior for various messages - messages also can be passed with `data: any`.
+
+## "Good" example
 
 
+```ts
+import CozyPorts from './CozyPorts'
+
+const pipelines_network = new CozyPorts(10);
 
 
+// Entity 1: --->
+const Button1: HTMLElement = document.createElement('button');
+Button1.textContent = 'Button1';
 
+// responce for message 'your_event'
+Button1.addEventListener('your_event', (): void => console.log('Event dispatched to Button1'));
+// placed to pipeline 1
+const Button1_connection = pipelines_network.connectToPort(1, Button1);
+// <---
+
+
+// Entity 2: --->
+const Button2: HTMLElement = document.createElement('button');
+Button2.textContent = 'Button2';
+
+// responce for message 'your_event'
+Button2.addEventListener('your_event', (): void => console.log('Event dispatched to Button2'));
+// placed to pipeline 2
+const Button2_connection = pipelines_network.connectToPort(2, Button2);
+// <---
+
+
+// Entity 3: --->
+class Logger
+{
+    private static _logs: string[] = [];
+    private static get logs()
+    {
+        return this._logs;
+    };
+    
+    private static WriteLog(data: string): void
+    {
+        this._logs.push(typeof data === 'string' ? data : 'incorrect data');
+        this.logs;
+    };
+
+    // responce for message 'your_event'
+    public static your_event(data: any)
+    {
+        this.WriteLog(data)
+    };
+};
+
+// If this entity won't send messages anyway or there is just no need in it,
+// you can just connect it, it don't save API to send messages.
+pipelines_network.connectToPort(1, Logger);
+// <---
+
+
+// Entity 4: --->
+class DummyObjectsGenerator
+{
+    private veryUsefulMethod()
+    {
+        console.log('Fetching Pentagon and Zone-51 most secret server . . .');
+    };
+};
+// object, that won't respond to message 'your_event';
+const RandomName55 = new DummyObjectsGenerator();
+// placed to pipeline 1
+const DummyObjectsGenerator_connection = pipelines_network.connectToPort(1, RandomName55);
+// <---
+```
 
