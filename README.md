@@ -12,6 +12,14 @@ So, let me explain the same in practice.
 ```ts
 import CozyPorts from './CozyPorts'
 ```
+
+# Contents:
+
+- [How it works in practice](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#how-it-works-in-practice)
+    - [Connect to port](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#connect-to-port)
+    - [Dispatch to all](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#dispatch-to-all)
+- 
+
 ## How it works in practice
 
 Firstly we need an pipeline. Where we can put our entities.
