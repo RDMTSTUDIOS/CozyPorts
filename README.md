@@ -20,7 +20,6 @@ Firstly we need an pipeline. Where we can put our entities.
 > Code below creates a network with 10 pipelines in it.
 ```ts
 const pipelines_network = new CozyPorts(10);
-// 
 ```
 An identifier of specific pipeline is an integer number, in `CozyPorts` it's called `port`.
 
@@ -28,12 +27,19 @@ Now our `pipelines_network` is an API to interract with it - object that has two
 
 ### Connect to port
 
-Remember about entities that contained in a pipeline? [Pipeline concept](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#pipeline-concept). So `connectToPort()` method places to a specified pipeline (port: integer) a specified entity (entity: any).
+Remember about entities that contained in a pipeline? [Pipeline concept](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#pipeline-concept). So `.connectToPort()` is a method that places to a specified pipeline (port: integer) a specified entity (entity: any).
 
 ```ts
 .connectToPort(port: number, entity: any)
 ```
+Let's create an entity and place it to specific pipeline.
 
+```ts
+const Button1: HTMLElement = document.createElement('button');
+Button1.textContent = 'Button1';
+Button1.addEventListener('your_event', (): void => console.log('Event dispatched to Button1'));
+```
+> Note: entities can only not be a html elements, we will see it a bit later.
 
 
 
