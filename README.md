@@ -1,6 +1,6 @@
 # CozyPorts
 
-### Pipeline concept
+## Pipeline concept
 
 CozyPorts are based on a `pipeline concept`, which means that events and dispatched only to entities in a specified 'pipeline'. What's that mean and how it works:
 
@@ -12,6 +12,6 @@ So, let me explain the same in practice.
 ```ts
 import CozyPorts from './CozyPorts'
 ```
-# TypeScript implematation
+#$ How it works in practice
 
 An identifier of that pipeline is a integer number, in `CozyPorts` it's called `port`.
