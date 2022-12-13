@@ -18,7 +18,9 @@ import CozyPorts from './CozyPorts'
 - [How it works in practice](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#how-it-works-in-practice)
     - [Connect to port](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#connect-to-port)
     - [Dispatch to all](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#dispatch-to-all)
-- 
+- ["Good" example](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#good-example)
+- [What it all was about](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#what-it-all-was-about)
+- [Summing up and API](https://github.com/RDMTSTUDIOS/CozyPorts/blob/main/README.md#summing-up-and-api)
 
 ## How it works in practice
 
@@ -287,7 +289,7 @@ So again, we expect to see only one console log:
 
 ![single-calls_2](https://user-images.githubusercontent.com/118057254/207463397-3cdff309-c883-4c67-b7ec-2e44dc00b5f5.png)
 
-### Last " shout "
+### First " shout "
 
 The last " shout " is a dispatch to all method.
 
