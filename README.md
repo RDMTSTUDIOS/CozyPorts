@@ -22,5 +22,6 @@ Firstly we need an pipeline. Where we can put our entities.
 const pipelines_network = new CozyPorts(10);
 // 
 ```
-
 An identifier of specific pipeline is an integer number, in `CozyPorts` it's called `port`.
+
+Now our `pipelines_network` is an API to interract with our pipelines network and it has only two options: ```tspublic connectToPort(port: number, entity: any)` and `public dispatchToAll(message: string, data?: any)```
