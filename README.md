@@ -94,9 +94,10 @@ And now, if Button1 will " shout 'your_event' " - Button2 won't hear it.
 
 And it's obvious, because they are in different pipelines.
 
+But antoher main feature of `CozyPorts` - that we can put in pipelines now only HTMLElements, but another entity, that can be provided with interface.
+For example classes, objects, `CozyPorts` even can be used to work only with them, without HTMLElements. And the point is we can build very flexible and light-weight 'networks', becaise `CozyPorts` constructor via `new` keyword provides a newly created incapsulated instance of a `Pipelines nerwork` with specified amount of `pipes`, which marker with unique identifiers called `ports`: 0 to (number of ports - 1).
 
-
-
+You can control, what `rights` or `what entity hears` by connecting it to `Pipelines nerwork` specified `port`. And the feature here that entity hears everything in that pipeline, BUT, it can respond and not to respond. AND it's very easy to make them respond to `messages` - by just adding a eventListeners to HTMLElements and public methods to classes and objects. You can even done it dynamically in your code - remove method/eventListener - entity won't respond, add method/eventListener - it will. You don't need co configure the pipeline or a network later in code. You are not controlling the structure of a network - you control entitys behavior 
 
 
 
