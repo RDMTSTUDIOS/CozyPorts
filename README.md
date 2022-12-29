@@ -312,7 +312,7 @@ When any entity sends message - it's like "shouting", everyone in the pipeline w
 
 You don't have to import elements in code, they can now talk blindly. You can treat pipelines network as a `namespace`, where all your entities can talk to each other, but blindly and even share any data, attached to "message", among entities.
 
-You can create your architecture in one, where calling one function - a returned function from connecting entity to a port, will turn very comples process and make your app very imperative, practically without loss of performance.
+You can create your architecture in one, where calling one function - a returned function from connecting entity to a port, will turn very complex process and make your app very imperative, practically without loss of performance.
 
 ## Summing up and API
 
