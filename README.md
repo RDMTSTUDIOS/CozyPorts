@@ -106,9 +106,9 @@ And it's obvious, because they are in different pipelines.
 
 But another very important feature of the `CozyPorts` - that we can put in pipelines now only HTMLElements, but any another entity, that can be provided with interface.
 
-For example classes, objects, `CozyPorts` even can be used to work only with them, without HTMLElements. And the point is we can build very flexible and light-weight 'networks', becaise `CozyPorts` constructor via `new` keyword provides a newly created incapsulated instance of a `Pipelines nerwork` with specified amount of `pipes`, which marker with unique identifiers called `ports`: 0 to (number of ports - 1).
+For example classes, objects, `CozyPorts` even can be used to work only with them, without HTMLElements. And the point is we can build very flexible and light-weight 'networks', becaise `CozyPorts` constructor via `new` keyword provides a newly created incapsulated instance of a `Pipelines nerwork` with specified amount of `pipes`, which marked with unique identifiers called `ports`: 0 to (number of ports - 1).
 
-You can control, what **what entity hears** or **will it respond or not** by connecting it to a **Pipelines nerwork** specified `port`. And the feature here that entity hears everything in that pipeline, BUT, it can respond and not to respond, and it depends only on entity, so your code is still encapsulated - 
+You can control, **what entity hears** or **will it respond or not** by connecting it to a **Pipelines nerwork** specified `port`. And the feature here that entity hears everything in that pipeline, BUT, it can respond and not to respond, and it depends only on entity, so your code is still encapsulated - 
 
 " ***any other entity don't have to know anything about this entity, and even don't have to know, that it's even exists.
 Messages can be compared to echo, which spreads across the pipeline.***. "
