@@ -25,7 +25,7 @@ import CozyPorts from './CozyPorts'
 ## How it works in practice
 
 Firstly we need an pipeline. Where we can put our entities.
-`CozyPorts` is used not to return a single pipeline, but a pipelines network - an instance of `CozyPorst`, which takes only one parameter as an integer - a number of pipelines, that will exist in a network.
+`CozyPorts` is used not to return a single pipeline, but a pipelines network - an instance of `CozyPorts`, which takes only one parameter as an integer - a number of pipelines, that will exist in a network.
 
 > Code below creates a network with 10 pipelines in it.
 ```ts
